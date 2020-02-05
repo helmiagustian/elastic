@@ -1330,10 +1330,9 @@ func (c *Client) PerformRequestWithOptions(ctx context.Context, opt PerformReque
 			time.Sleep(wait)
 			continue // try again
 		}
-		if res.Body != nil {
-			defer res.Body.Close()
-		}
-
+		
+		defer res.Body.Close()
+		
 		// Tracing
 		c.dumpResponse(res)
 
